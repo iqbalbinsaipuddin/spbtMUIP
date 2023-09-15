@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Controller;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +16,9 @@ use App\Http\Controllers\Controller;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/greeting', function () {
-    $name = 'abu';
-    return 'Hello World'.$name;
-});
 
-Route::get('/mukadepan',[Controller::class, 'index']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/aktiviti', [App\Http\Controllers\MaklumatAktivitiController::class, 'index'])->name('aktiviti.index');
+Route::get('/aktiviti/create', [App\Http\Controllers\MaklumatAktivitiController::class, 'create'])->name('aktiviti.create');
