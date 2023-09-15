@@ -12,8 +12,6 @@ class Controller extends BaseController
 
    public function index(){
         $name = 'abu';
-        
-
         return view('welcome', compact('name'));
    }
 }
