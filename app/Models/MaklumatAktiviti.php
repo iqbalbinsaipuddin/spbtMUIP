@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class MaklumatAktiviti extends Model
 {
     use HasFactory;
+    public $timestamps = false;
 
 	protected $table = 'maklumat_aktiviti';
     protected $primaryKey = 'id_aktiviti';
     // protected $incrementing = false;
-    protected $timestamp = false;
+    // public $timestamp = false;
 
 }
