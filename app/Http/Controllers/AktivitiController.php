@@ -20,8 +20,8 @@ class AktivitiController extends Controller
             $current_year=date('Y');
         else
             $current_year=$request->tahun;
-        // tgh repair
-        // $listtahun= Aktiviti::select('tahun')->distinct()->orderBy('tahun','asc')->get();
+      
+        $listtahun= Aktiviti::select('tahun')->distinct()->orderBy('tahun','asc')->get();
         if($request->tahun=='SEMUA')
             $aktivitis = Aktiviti::with('pengguna')->get();
         else
