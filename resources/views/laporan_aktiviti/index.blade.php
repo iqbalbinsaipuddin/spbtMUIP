@@ -15,7 +15,8 @@
                     @endif
 
                     <form action="{{route('laporan.index')}}">
-                        <select name="tahun">
+                        <select name="tahun" class='select2 col-md-2'>
+                            <option value="SEMUA">SEMUA TAHUN</option>
                             @foreach($listtahun as $tahun) <!-- condition ? output1 : output2 -->
                                 <option value="{{$tahun->tahun}}" {{$current_year == $tahun->tahun ? 'selected' : ''}}>{{$tahun->tahun}}</option>
                             @endforeach
@@ -50,17 +51,9 @@
 </div>
 <script>
     $(document).ready(function() {
-        $('#table').footable({
-			"paging": {
-				"enabled": true
-			},
-			"filtering": {
-				"enabled": true
-			},
-			"sorting": {
-				"enabled": true
-			}
-		});
+        $('.select2').select2({
+            placeholder:"Sila pilih tahun"
+        });
     });
 </script>
 

@@ -22,7 +22,7 @@
                                 <Label for="nama">NAMA</Label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class="col-12" name="nama" required maxlength="100" disabled value="{{$current_user->name}}">
+                                <input type="text" class="col-12" name="nama" required maxlength="100" disabled value="{{$current_user->nama}}">
                             </div>
                         </div>
                         <div class="row">
@@ -30,9 +30,10 @@
                                 <Label for="unit">BAHAGIAN/UNIT</Label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class="col-12" name="unit" disabled value="{{$current_user->id}}">
+                                <input type="text" class="col-12" name="unit" disabled value="{{$current_user->bahagian_unit}}">
                             </div>
                         </div>
+                        <hr>
                         <div class="row">
                             <div class="col-3">
                                 <Label for="tahun">TAHUN</Label>

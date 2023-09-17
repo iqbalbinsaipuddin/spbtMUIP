@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Pengguna;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -50,9 +50,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'nama' => ['required', 'string', 'max:100'],
+            'no_kp' => ['required', 'string', 'digits:12', 'unique:maklumat_pengguna'],
+            'katalaluan' => ['required', 'string', 'min:8', 'confirmed'],
+            'jawatan' => ['required', 'string', 'max:50'],
+            'bahagian_unit' => ['required', 'string', 'max:50'],
         ]);
     }
 
@@ -64,10 +66,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+        return Pengguna::create([
+            'nama' => $data['nama'],
+            'no_kp' => $data['no_kp'],
+            'katalaluan' => openssl_encrypt($data['katalaluan'], "AES-128-CTR", "GeeksforGeeks", 0, '1234567891011121'),
+            'jawatan' => $data['jawatan'],
+            'bahagian_unit' => $data['bahagian_unit']
         ]);
     }
 }

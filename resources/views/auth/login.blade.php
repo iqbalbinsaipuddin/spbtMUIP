@@ -10,52 +10,31 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-                        @error('email')
-                                <div class="row">
-									<div class="col-sm-12">
-										<div class="alert alert-danger">
-											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-												<i class="material-icons">close</i>
-											</button>
-											<span>{{ $message }}</span>
-										</div>
-									</div>
-								</div>
-                                @enderror
+                        
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                There were some errors with your request.
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                            <label for="no_kp" class="col-md-4 col-form-label text-md-end">{{ __('Nombor Kad Pengenalan') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                               
-                              
-                            </div>
+                                <input id="no_kp" type="number" class="form-control @error('no_kp') is-invalid @enderror" name="no_kp" value="{{ old('no_kp') }}" required autocomplete="no_kp" autofocus>
+                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+                            <label for="katalaluan" class="col-md-4 col-form-label text-md-end">{{ __('Katalaluan') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
+                                <input id="katalaluan" type="password" class="form-control @error('katalaluan') is-invalid @enderror" name="katalaluan" required autocomplete="current-katalaluan">
                             </div>
                         </div>
 
@@ -64,12 +43,6 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
                             </div>
                         </div>
                     </form>

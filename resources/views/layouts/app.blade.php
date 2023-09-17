@@ -19,12 +19,13 @@
     <!-- select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <!-- FooTable -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/3.1.6/footable.bootstrap.min.css" integrity="sha512-3kAToXGLroNvC/4WUnxTIPnfsiaMlCn0blp0pl6bmR9X6ibIiBZAi9wXmvpmg1cTyd2CMrxnMxqj7D12Gn5rlw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-footable/3.1.6/footable.min.js" integrity="sha512-aVkYzM2YOmzQjeGEWEU35q7PkozW0vYwEXYi0Ko06oVC4NdNzALflDEyqMB5/wB4wH50DmizI1nLDxBE6swF3g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- FooTable -->
+    <link rel="stylesheet" href="{{ asset('Footable.min.css') }}">
+    <script src="{{ asset('Footable.min.js') }}"></script>
+
 </head>
 <body>
     <div id="app">
@@ -73,7 +74,7 @@
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    {{ Auth::user()->nama }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
