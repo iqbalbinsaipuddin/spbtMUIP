@@ -96,8 +96,8 @@
                             </div>
                         </div>
                         <div>
-                            <input type="submit">
-                            <a class="btn btn-sm btn-primary" href="{{ route('aktiviti.index')}}">Kembali</a>
+                            <input class="btn btn-sm btn-success" type="submit">
+                            <a class="btn btn-sm btn-secondary" href="{{ url()->previous()}}">Kembali</a>
                         </div>
                     </form>
                 </div>

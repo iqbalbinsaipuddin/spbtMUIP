@@ -13,12 +13,12 @@ class LaporanController extends Controller
         // dd('Selamat datang ke Maklumat Aktiviti!');
         // dd($request->tahun);
         if($request->tahun==null)
-            $current_year=date('Y');
+            $current_year='SEMUA';
         else
             $current_year=$request->tahun;
         
         $listtahun= Aktiviti::select('tahun')->distinct()->orderBy('tahun','asc')->get();
-        if($request->tahun=='SEMUA')
+        if($current_year=='SEMUA')
             $aktivitis = Aktiviti::groupBy('jenis')->selectRaw('count(*) as total, jenis')->selectRaw('sum(peruntukan) as peruntukan, jenis')->get();
         else
             $aktivitis = Aktiviti::where('tahun', $current_year)->groupBy('jenis')->selectRaw('count(*) as total, jenis')->selectRaw('sum(peruntukan) as peruntukan, jenis')->get();

@@ -16,16 +16,19 @@ class AktivitiController extends Controller
     public function index(Request $request)
     {
         // dd('Selamat datang ke Maklumat Aktiviti!');
-        if($request->tahun==null)
-            $current_year=date('Y');
+        if($request->tahun==null){
+            // $current_year=date('Y'); 
+            $current_year='SEMUA';
+        }
         else
             $current_year=$request->tahun;
         
         $listtahun= Aktiviti::select('tahun')->distinct()->orderBy('tahun','asc')->get();
-        if($request->tahun=='SEMUA')
+        if($current_year=='SEMUA')
             $aktivitis = Aktiviti::with('pengguna')->get();
         else
             $aktivitis = Aktiviti::with('pengguna')->where('tahun', $current_year)->get();
+        // dd($aktivitis);
         return view('maklumat_aktiviti.index', compact('aktivitis','listtahun','current_year'));
     }
 
@@ -37,8 +40,8 @@ class AktivitiController extends Controller
        
         $current_user = Pengguna::find(auth()->user()->id_pengguna);
         // dd($current_user,auth()->user());
+        return view('maklumat_aktiviti.index', compact('current_user'));
         // dd('Borang Maklumat Aktiviti');
-        return view('maklumat_aktiviti.create', compact('current_user'));
     }
 
     /**
@@ -136,6 +139,6 @@ class AktivitiController extends Controller
         $maklumat_aktiviti = Aktiviti::find($request->id_aktiviti);
         $maklumat_aktiviti->delete();
 
-        return redirect()->route("aktiviti.index");
+        return redirect()->back();
     }
 }

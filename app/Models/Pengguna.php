@@ -26,6 +26,8 @@ class Pengguna extends Authenticatable
         'nama',
         'no_kp',
         'katalaluan',
+        'jawatan',
+        'bahagian_unit'
     ];
 
     /**

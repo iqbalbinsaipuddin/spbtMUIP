@@ -97,7 +97,7 @@
                         </div>
                         <div>
                             <input class="btn btn-sm btn-success" type="submit">
-                            <a class="btn btn-sm btn-secondary" href="{{ route('aktiviti.index')}}">Kembali</a>
+                            <a class="btn btn-sm btn-secondary" href="{{ url()->previous()}}">Kembali</a>
                          
                         </div>
                     </form>
