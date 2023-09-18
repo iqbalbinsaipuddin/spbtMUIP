@@ -14,6 +14,16 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if ($errors->any())
+                            <div class="alert alert-danger">
+                                There were some errors with your request.
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                    @endif
                     
                     <form action="{{ route('aktiviti.store')}}" method='post'>
                         @csrf

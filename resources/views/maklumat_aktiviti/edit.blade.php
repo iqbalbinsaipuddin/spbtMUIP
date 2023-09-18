@@ -15,6 +15,16 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            There were some errors with your request.
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     
                     <form action="{{ route('aktiviti.update', $maklumat_aktiviti->id_aktiviti)}}" method='post'>
                         @csrf
@@ -31,9 +41,10 @@
                                 <Label for="unit">BAHAGIAN/UNIT</Label>
                             </div>
                             <div class="col-9">
-                                <input type="text" class="col-12" name="unit" disabled value="{{$current_user->id_pengguna}}">
+                                <input type="text" class="col-12" name="unit" disabled value="{{$current_user->bahagian_unit}}">
                             </div>
                         </div>
+                        <hr>
                         <div class="row">
                             <div class="col-3">
                                 <Label for="tahun">TAHUN</Label>
@@ -53,7 +64,7 @@
                                 <Label for="tarikh_akhir">SEHINGGA</Label>
                             </div>
                             <div class="col-3">
-                                <input type="date" class="col-12" name="tarikh_akhir" value='{{date("Y-m-d", strtotime($maklumat_aktiviti->tarikh_akhir))}}'>
+                                <input type="date" class="col-12" name="tarikh_akhir" value='{{$maklumat_aktiviti->tarikh_akhir != null ? date("Y-m-d", strtotime($maklumat_aktiviti->tarikh_akhir)):""}}'>
                             </div>
                         </div>
                         <div class="row">
@@ -96,8 +107,8 @@
                             </div>
                         </div>
                         <div>
-                            <input class="btn btn-sm btn-success" type="submit">
-                            <a class="btn btn-sm btn-secondary" href="{{ url()->previous()}}">Kembali</a>
+                            <input class="btn btn btn-success padding: 10px 24px; btn-outline col-2" type="submit">
+                            <a class="btn btn padding: 10px 24px; btn-outline col-2 btn-secondary" href="{{ url()->previous()}}">Kembali</a>
                         </div>
                     </form>
                 </div>

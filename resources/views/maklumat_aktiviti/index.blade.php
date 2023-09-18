@@ -41,7 +41,7 @@
                         </thead>
                         <tbody>
                             @foreach($aktivitis as $aktiviti)
-                            <tr>
+                            <tr style="text-transform:uppercase">
                                 <!-- condition ? output1 : output2 -->
                                 
                                 <td>{{ date('d/m/Y', strtotime($aktiviti->tarikh_mula))}} {{$aktiviti->tarikh_akhir ? 'hingga '.date('d/m/Y', strtotime($aktiviti->tarikh_akhir)) : ''}}</td>
@@ -68,7 +68,7 @@
                     </table>
                     <br>
                     <div class="row">
-                            <span class="col-10" style="text-align:center">JUMLAH KESELURUHAN PERUNTUKAN {{$current_year}} : RM{{$aktivitis->sum('peruntukan')}} </span>
+                            <span class="col-10" style="text-align:center">JUMLAH KESELURUHAN PERUNTUKAN {{$current_year}} : RM {{$aktivitis->sum('peruntukan')}} </span>
                             <a class="btn btn-success padding: 10px 24px; btn-outline col-2" href="{{ route('aktiviti.create')}}">TAMBAH AKTIVITI</a>
                     </div>
                 </div>

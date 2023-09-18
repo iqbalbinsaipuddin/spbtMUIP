@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">{{ __('Selamat Datang!') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,9 +14,13 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Tahniah!') }}
                     <br>
-                    Click <a href="{{ route('aktiviti.index') }}">here</a> to go to Maklumat Aktiviti
+                    {{ __('Anda telah berjaya memasuki Sistem Perancangan Belanjawan Tahunan') }}
+                    <br>
+                    Sila klik di bawah untuk ke halaman Maklumat Aktiviti
+                    <br>
+                    <a class="btn btn-success padding: 10px 24px; btn-outline col-4" href="{{ route('aktiviti.index') }}">MAKLUMAT AKTIVITI</a>
                 </div>
             </div>
         </div>

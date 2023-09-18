@@ -24,6 +24,7 @@ class AktivitiController extends Controller
             $current_year=$request->tahun;
         
         $listtahun= Aktiviti::select('tahun')->distinct()->orderBy('tahun','asc')->get();
+        // dd($listtahun);
         if($current_year=='SEMUA')
             $aktivitis = Aktiviti::with('pengguna')->get();
         else
@@ -37,10 +38,10 @@ class AktivitiController extends Controller
      */
     public function create()
     {
-       
+    //    dd("test");
         $current_user = Pengguna::find(auth()->user()->id_pengguna);
         // dd($current_user,auth()->user());
-        return view('maklumat_aktiviti.index', compact('current_user'));
+        return view('maklumat_aktiviti.create', compact('current_user'));
         // dd('Borang Maklumat Aktiviti');
     }
 
@@ -52,7 +53,7 @@ class AktivitiController extends Controller
         $this->validate($request,[
             'tahun'=>'required|digits:4',
             'tarikh_mula'=>'required|date',
-            'tarikh_akhir'=>'required|date',
+            'tarikh_akhir'=>'nullable|date',
             'jenis'=>'required',
             'nama_aktiviti'=>'required|max:100',
             'peruntukan'=>'required|decimal:0,2',
@@ -106,7 +107,7 @@ class AktivitiController extends Controller
         $this->validate($request,[
             'tahun'=>'required|digits:4',
             'tarikh_mula'=>'required|date',
-            'tarikh_akhir'=>'required|date',
+            'tarikh_akhir'=>'nullable|date',
             'jenis'=>'required',
             'nama_aktiviti'=>'required|max:100',
             'peruntukan'=>'required|decimal:0,2',

@@ -23,6 +23,7 @@
                         </select>
                         <input type="submit" value='CARI' class='btn btn-primary btn-sm'>
                     </form>
+                    <br>
                     
                     <table class='col-12 table table-striped'>
                         <tr>
