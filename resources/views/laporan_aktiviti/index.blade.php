@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header"style="text-align:center" >{{ __('Maklumat Aktiviti') }}</div>
+                <div class="card-header"style="text-align:center" >{{ __('Laporan Maklumat Aktiviti') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,6 +14,7 @@
                         </div>
                     @endif
 
+                    <!-- Display tahun -->
                     <form action="{{route('laporan.index')}}">
                         <select name="tahun" class='select2 col-md-2'>
                             <option value="SEMUA">SEMUA TAHUN</option>
@@ -24,8 +25,8 @@
                         <input type="submit" value='CARI' class='btn btn-primary btn-sm'>
                     </form>
                     <br>
-                    
-                    <table class='col-12 table table-striped'>
+                    <!-- design table  -->
+                    <table class='col-12 table table-striped' style="text-transform:uppercase">
                         <tr>
                             <th>Tahun</th>
                             <th>Jenis</th>
@@ -50,6 +51,7 @@
         </div>
     </div>
 </div>
+<!-- dropdown list dan view "sila pilih tahun" -->
 <script>
     $(document).ready(function() {
         $('.select2').select2({

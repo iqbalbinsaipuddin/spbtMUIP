@@ -26,14 +26,15 @@
                         <input type="submit" value='CARI' class='btn btn-primary btn-sm'>
                     </form>
 
-                    <table id="table" class="table table-striped" data-show-toggle="true" data-paging="true" data-filtering="true" data-sorting="true" data-state="true" data-toggle-column="last" data-use-parent-width="true" data-filter-position="right">
+                    <table id="table" class="table table-striped" data-show-toggle="true" data-paging="true" data-filtering="true" data-sorting="true" data-state="true" data-toggle-column="last" data-use-parent-width="true" data-filter-position="right" style="text-transform:uppercase">
                         <thead>
                             <td width="10%">Tarikh</td>
                             <td width="10%">Jenis</td>
                             <td width="20%">Aktiviti</td>
-                            <td width="10%">Peruntukan (RM)</td>
+                            <td width="10%">Peruntukan(RM)</td>
                             <td width="30%">Catatan</td>
                             <td width="20%">Tindakan</td>
+                            <!-- Untuk view siapa yang buat  -->
                             <td width="20%" data-breakpoints="xs sm md lg">Tahun</td>
                             <td width="20%" data-breakpoints="xs sm md lg">Nama</td>
                             <td width="20%" data-breakpoints="xs sm md lg">Jawatan</td>
@@ -41,7 +42,7 @@
                         </thead>
                         <tbody>
                             @foreach($aktivitis as $aktiviti)
-                            <tr style="text-transform:uppercase">
+                            <tr>
                                 <!-- condition ? output1 : output2 -->
                                 
                                 <td>{{ date('d/m/Y', strtotime($aktiviti->tarikh_mula))}} {{$aktiviti->tarikh_akhir ? 'hingga '.date('d/m/Y', strtotime($aktiviti->tarikh_akhir)) : ''}}</td>
@@ -50,7 +51,6 @@
                                 <td>{{$aktiviti->peruntukan}}</td>
                                 <td>{{$aktiviti->catatan}}</td>
                                 <td>
-                                    <!-- <a class="btn btn-sm btn-primary pull-right">PADAM</a> -->
                                     <form action='{{ route("aktiviti.destroy")}}' class="row" method="post">
                                         @csrf
                                         <input type="hidden" name="id_aktiviti" value="{{$aktiviti->id_aktiviti}}">
